@@ -1,6 +1,6 @@
-﻿using Create_Personalizated_Exceptions.Entities;
+﻿using Tabuleiro;
 using System;
-using Create_Personalizated_Exceptions.Entities.Exceptions;
+
 
 
 namespace Course
@@ -9,6 +9,16 @@ namespace Course
     {
         static void Main(string[] args)
         {
+
+            Posicao P;
+
+            P = new Posicao(3, 4);
+
+            Console.WriteLine("Posição: " + P);
+
+            Console.ReadLine();
+            
+            
             /*try
             {
                 Console.Write("Room number: ");
