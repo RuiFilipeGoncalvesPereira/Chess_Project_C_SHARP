@@ -54,13 +54,14 @@ namespace Tabuleiro
             {
                 return false;
             }
+            else
             {
                 return true;
             }
         }
         public void validarPosicao(Posicao pos)
         {
-            if(posicaoValida(pos))
+            if(!posicaoValida(pos))
             {
                 throw new TabuleiroException("Posição inválida!");
             }

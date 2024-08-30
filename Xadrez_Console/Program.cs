@@ -18,7 +18,7 @@ namespace Xadrez_Console
              P = new Posicao(3, 4);
              Console.WriteLine("Posição: " + P);
              Console.ReadLine();*/
-            /* try
+            try
              {
                  tabuleiro tab = new tabuleiro(8, 8); // classe peça é instanciada para que a funçãp coloca peça coloque peças no tabuleiro 
 
@@ -26,21 +26,22 @@ namespace Xadrez_Console
                  tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 3));
                  tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 2));
 
+                 tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(3, 5));
 
                  Tela.imprimirTabuleiro(tab);
 
              }catch(TabuleiroException e)
              {
                  Console.WriteLine(e.Message);
-             }*/
+             }
 
-            PosicaoXadrez pos = new PosicaoXadrez('c', 7);
+            /*PosicaoXadrez pos = new PosicaoXadrez('c', 7);
 
             Console.WriteLine(pos);
 
             Console.WriteLine(pos.toPosicao());
 
-            Console.ReadLine();
+            Console.ReadLine();*/
             
 
         }
