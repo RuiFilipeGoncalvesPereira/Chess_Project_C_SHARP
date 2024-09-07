@@ -20,10 +20,18 @@ namespace Xadrez_Console
             imprimirPecasCapturadas(partida);
             Console.WriteLine();
             Console.WriteLine("Turmo: " + partida.turno);
-            Console.WriteLine("Aguardo jogada: " + partida.jogadorAtual);
-            if(partida.xeque)
+            if (!partida.terminada)
             {
-                Console.WriteLine("CHECK!");
+                Console.WriteLine("Aguardo jogada: " + partida.jogadorAtual);
+                if (partida.xeque)
+                {
+                    Console.WriteLine("CHECK!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("XECKEMATE!");
+                Console.WriteLine("Vencedor: " + partida.jogadorAtual);
             }
         }
 
@@ -96,7 +104,7 @@ namespace Xadrez_Console
         {
             string s = Console.ReadLine();
             char coluna = s[0];
-            int linha = int.Parse(s[1] + " ");
+            int linha = int.Parse(s[1] + "");
             return new PosicaoXadrez(coluna, linha);
         }
 

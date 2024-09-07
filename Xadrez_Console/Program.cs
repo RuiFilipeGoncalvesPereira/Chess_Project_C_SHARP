@@ -29,11 +29,8 @@ namespace Xadrez_Console
                     try
                     {
                         Console.Clear();
-                        //Tela.imprimirTabuleiro(partida.tab);
                         Tela.imprimirPatida(partida);
                         Console.WriteLine();
-                        //Console.WriteLine("Turno: " + partida.turno);
-                        //Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
 
                         Console.WriteLine();
                         Console.Write("Origem: ");
@@ -59,21 +56,16 @@ namespace Xadrez_Console
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
-                }      
+                }
+                Console.Clear();
+                Tela.imprimirPatida(partida);
               }
             catch(TabuleiroException e)
              {
                  Console.WriteLine(e.Message);
              }
 
-            /*PosicaoXadrez pos = new PosicaoXadrez('c', 7);
-
-            Console.WriteLine(pos);
-
-            Console.WriteLine(pos.toPosicao());
-
-            Console.ReadLine();*/
-            
+            Console.ReadLine();
 
         }
     }

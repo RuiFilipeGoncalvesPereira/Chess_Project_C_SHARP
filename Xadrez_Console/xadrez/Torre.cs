@@ -50,7 +50,7 @@ namespace Xadrez_Console.xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Linha - 1;
+                pos.Linha = pos.Linha + 1;
             }
 
             //direita
@@ -62,7 +62,7 @@ namespace Xadrez_Console.xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Linha - 1;
+                pos.Linha = pos.Linha + 1;
             }
 
             //esquerda
