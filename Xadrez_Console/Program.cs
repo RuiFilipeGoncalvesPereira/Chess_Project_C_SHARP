@@ -13,11 +13,6 @@ namespace Xadrez_Console
     {
         static void Main(string[] args)
         {
-
-            /* Posicao P;
-             P = new Posicao(3, 4);
-             Console.WriteLine("Posição: " + P);
-             Console.ReadLine();*/
             try
              {
                 //tabuleiro tab = new tabuleiro(8, 8); // classe peça é instanciada para que a funçãp coloca peça coloque peças no tabuleiro 
@@ -37,7 +32,6 @@ namespace Xadrez_Console
                         Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
                         partida.validarPosicaoOrigem(origem);
 
-
                         bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
 
                         Console.Clear();
@@ -47,9 +41,9 @@ namespace Xadrez_Console
                         Console.Write("Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
                         partida.validarPosicaoDestino(origem, destino);
-
-
+                        Console.WriteLine("1");
                         partida.realizaJogada(origem, destino);
+                        Console.WriteLine("2");
                     }
                     catch (TabuleiroException e)
                     {

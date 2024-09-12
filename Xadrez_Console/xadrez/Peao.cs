@@ -10,8 +10,11 @@ namespace Xadrez_Console.xadrez
 {
     class Peao : Peca 
     {
-        public Peao(tabuleiro tab, Cor cor) : base(tab, cor)
+        private PartidaDeXadrez partida;
+
+        public Peao(tabuleiro tab, Cor cor, PartidaDeXadrez partida) : base(tab, cor)
         {
+            this.partida = partida;
         }
 
         public override string ToString()
@@ -44,7 +47,8 @@ namespace Xadrez_Console.xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(posicao.Linha - 2, posicao.Coluna);
-                if (tab.posicaoValida(pos) && livre(pos) && qteMovimentos == 0)
+                Posicao p2 = new Posicao(posicao.Linha - 1, posicao.Coluna);
+                if (tab.posicaoValida(p2) && livre(p2) && tab.posicaoValida(pos) && livre(pos) && qteMovimentos == 0)
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
@@ -58,6 +62,22 @@ namespace Xadrez_Console.xadrez
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
+
+                // #jogadorespecial en passant
+                if(posicao.Linha == 3)
+                {
+                    Posicao esquerda = new Posicao(posicao.Linha, posicao.Coluna - 1);
+                    if(tab.posicaoValida(esquerda) && existeInimigo(esquerda) && tab.peca(esquerda) == partida.vulneravelEnPassant)
+                    {
+                        mat[esquerda.Linha -1, esquerda.Coluna] = true;
+                    }
+                    Posicao direita = new Posicao(posicao.Linha, posicao.Coluna - 1);
+                    if (tab.posicaoValida(direita) && existeInimigo(direita) && tab.peca(direita) == partida.vulneravelEnPassant)
+                    {
+                        mat[direita.Linha -1, direita.Coluna] = true;
+                    }
+                }
+
             }
             else
             {
@@ -67,7 +87,8 @@ namespace Xadrez_Console.xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(posicao.Linha + 2, posicao.Coluna);
-                if (tab.posicaoValida(pos) && livre(pos) && qteMovimentos == 0)
+                Posicao p2 = new Posicao(posicao.Linha + 1, posicao.Coluna);
+                if (tab.posicaoValida(p2) && livre(p2) && tab.posicaoValida(pos) && livre(pos) && qteMovimentos == 0)
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
@@ -81,9 +102,27 @@ namespace Xadrez_Console.xadrez
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
-            }
 
-            return mat;
+
+                // #jogadorespecial en passant
+                if (posicao.Linha == 4)
+                {
+                    Posicao esquerda = new Posicao(posicao.Linha, posicao.Coluna - 1);
+                    if (tab.posicaoValida(esquerda) && existeInimigo(esquerda) && tab.peca(esquerda) == partida.vulneravelEnPassant)
+                    {
+                        mat[esquerda.Linha + 1, esquerda.Coluna] = true;
+                    }
+                    Posicao direita = new Posicao(posicao.Linha, posicao.Coluna - 1);
+                    if (tab.posicaoValida(direita) && existeInimigo(direita) && tab.peca(direita) == partida.vulneravelEnPassant)
+                    {
+                        mat[direita.Linha + 1, direita.Coluna] = true;
+                    }
+                }
+
+
+                }
+
+                return mat;
 
         }
     }

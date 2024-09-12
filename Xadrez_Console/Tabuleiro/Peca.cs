@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Formatters;
-using System.Text;
-using System.Threading.Tasks;
-using Xadrez_Console.Tabuleiro;
+﻿using Xadrez_Console.Tabuleiro;
 
 namespace Tabuleiro
 {
@@ -16,15 +10,12 @@ namespace Tabuleiro
         public tabuleiro tab { get; protected set; }
 
         public Peca(tabuleiro tab, Cor cor)
-          {
+        {
             this.posicao = null;
             this.tab = tab;
             this.cor = cor;
             this.qteMovimentos = 0;
-           }
-
-
-
+        }
         public void incrementarQteMovimentos()
         {
             qteMovimentos++;
@@ -38,7 +29,7 @@ namespace Tabuleiro
         public bool existeMovimentosPossiveis()
         {
             bool[,] mat = movimentosPossiveis();
-            for (int i = 0; i<tab.linhas; i++)
+            for (int i=0; i<tab.linhas; i++)
             {
                 for(int j=0; j<tab.colunas; j++)
                 {
@@ -51,14 +42,11 @@ namespace Tabuleiro
             return false;
         }
 
-        public bool podeMoverPara(Posicao pos)
+        public bool movimentosPossiveis(Posicao pos)
         {
             return movimentosPossiveis()[pos.Linha, pos.Coluna];
         }
 
         public abstract bool[,] movimentosPossiveis();
-
-
-
     }
 }
